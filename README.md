@@ -1,6 +1,6 @@
 <h1>Tigers</h1>
-  <h5>Hi,</h5>
-  <h5>We are the Tigers. Our team consists of four members:</h5>
+  <h3>Hi,</h3>
+  <h3>We are the Tigers. Our team consists of four members:</h3>
   <br>
   <h1 align="center">Austin Scott</h1>
   <br>
