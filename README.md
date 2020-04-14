@@ -1,3 +1,7 @@
-# TCSS-360
 <h1>Tigers<h1>
-  we are the tigers
+  Hi,
+  We are the Tigers. Our group consists of four members:
+  Austin Scott
+  Ivan Mendez
+  Anh Tran
+  Khaled Alashor
