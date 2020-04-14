@@ -10,3 +10,5 @@
   Anh Tran
   <br>
   Khaled Alashor
+  <br>
+  Team Email: als48@uw.edu
