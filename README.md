@@ -3,12 +3,12 @@
   <br>
   We are the Tigers. Our group consists of four members:
   <br>
-  Austin Scott
+  <h1 align="center">Austin Scott</h1>
   <br>
-  Ivan Mendez
+  <h1 align="center">Ivan Mendez</h1>
   <br>
-  Anh Tran
+  <h1 align="center">Anh Tran</h1>
   <br>
-  Khaled Alashor
+  <h1 align="center">Khaled Alashor</h1>
   <br>
   Team Email:<a href="mailto:als48@uw.edu"> als48@uw.edu</a>
