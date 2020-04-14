@@ -1,5 +1,5 @@
 <h1>Tigers</h1>
-  <h1><font size="25 px">Hi,</font></h1>
+  <font size="25 px">Hi,</font>
   <br>
   <h1><font size="25 px">We are the Tigers. Our team consists of four members:</font></h1>
   <br>
