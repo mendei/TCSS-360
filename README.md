@@ -11,5 +11,4 @@
   <br>
   Khaled Alashor
   <br>
-  Team Email: 
-   <a href="mailto:als48@uw.edu">Team Email</a>
+   <h1>Team Email:<a href="mailto:als48@uw.edu" target="_top"> als48@uw.edu</a> </h1>
