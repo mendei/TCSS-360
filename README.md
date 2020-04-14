@@ -1,4 +1,4 @@
-<h1>Tigers<h1>
+<h1 align="center">Tigers</h1>
   Hi,
   <br>
   We are the Tigers. Our group consists of four members:
