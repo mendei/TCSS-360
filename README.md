@@ -1,7 +1,7 @@
 <h1 align="center">Tigers</h1>
   Hi,
   <br>
-  We are the Tigers. Our group consists of four members:
+  We are the Tigers. Our team consists of four members:
   <br>
   <h1 align="center">Austin Scott</h1>
   <br>
