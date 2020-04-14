@@ -1,7 +1,7 @@
 <h1>Tigers</h1>
-  Hi,
+  <h1><font size="25 px">Hi,</font></h1>
   <br>
-  We are the Tigers. Our team consists of four members:
+  <h1><font size="25 px">We are the Tigers. Our team consists of four members:</font></h1>
   <br>
   <h1 align="center">Austin Scott</h1>
   <br>
