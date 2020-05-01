@@ -37,6 +37,7 @@ public class UserInterface extends JFrame {
         setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
         
+        //NEED TO POST TO GIT
         //NEED TO ADD PANEL
         //NEED TO ADD LABEL WITH DESIGNER INFO
         //CALLED FROM VERSIONINFO CLASS.
