@@ -18,26 +18,23 @@ public class VersionInfo {
 	
 	
 	public VersionInfo() {
-		DESIGNER1 = getD1();
-		DESIGNER2 = getD2();
-		DESIGNER3 = getD3();
-		DESIGNER4 = getD4();
+	
 	}
 	
 	public String getD1() {
-		return "Austin Scott";
+		return DESIGNER1 = "Austin Scott";
 	}
 	
 	public String getD2() {
-		return "Ivan Mendez";
+		return DESIGNER2 = "Ivan Mendez";
 	}
 	
 	public String getD3() {
-		return "Khaled Alashor";
+		return DESIGNER3 = "Khaled Alashor";
 	}
 	
 	
 	public String getD4() {
-		return "Anh Tu Tran";
+		return DESIGNER4 = "Anh Tu Tran";
 	}
 }
