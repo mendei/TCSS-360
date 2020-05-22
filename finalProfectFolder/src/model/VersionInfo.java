@@ -1,4 +1,4 @@
-package aboutScreenCode;
+package model;
 /**
  * This is a version info class and it is supposed to be called when opening the
  * about UI to tell the user who are the designers, and other info.
