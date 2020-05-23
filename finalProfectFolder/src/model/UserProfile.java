@@ -4,28 +4,36 @@ import javax.swing.JFrame;
 
 public class UserProfile extends JFrame {
 
-	private String name1;
-
+	private String userName;
+	private String name;
 	private String email;
 
 	public UserProfile() {
 
 	}
 
-	public void setName(String theName) {
-		name1 = theName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setEmail(String theEmail) {
-		email = theEmail;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getName() {
-		return name1;
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
 		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
