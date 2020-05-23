@@ -1,48 +1,48 @@
 package model;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
 
+public class UserProfile extends JFrame {
 
-public class UserProfile extends JFrame{
-	
-	private String name1;
-	
+	private String userName;
+	private String password;
+	private String name;
 	private String email;
-	
+
 	public UserProfile() {
 
-		
 	}
 	
+	public String getPassword() {
+		return password;
+	}
 
-	
-
-	
-
-	
-	public void setName(String theName) {
-		name1 = theName;
-		
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
-	public void setEmail(String theEmail) {
-		email = theEmail;
+	public String getUserName() {
+		return userName;
 	}
-	
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public String getName() {
-		return name1;
+		return name;
 	}
-	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getEmail() {
 		return email;
 	}
-	
 
-	
-	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }
