@@ -5,13 +5,22 @@ import javax.swing.JFrame;
 public class UserProfile extends JFrame {
 
 	private String userName;
+	private String password;
 	private String name;
 	private String email;
 
 	public UserProfile() {
 
 	}
+	
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
