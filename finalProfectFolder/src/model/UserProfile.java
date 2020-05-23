@@ -12,7 +12,7 @@ public class UserProfile extends JFrame {
 	public UserProfile() {
 
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -20,7 +20,7 @@ public class UserProfile extends JFrame {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -43,6 +43,10 @@ public class UserProfile extends JFrame {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String toString() {
+		return String.format("%s,%s,%s,%s", userName, password, name, email);
 	}
 
 }
