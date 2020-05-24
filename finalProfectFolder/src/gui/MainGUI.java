@@ -57,7 +57,7 @@ public class MainGUI extends JFrame {
         super.add(containPanel);
         containPanel.add(dataImplementation(), BorderLayout.NORTH);
         
-        IES.importData(UP);
+        
         
  
               
