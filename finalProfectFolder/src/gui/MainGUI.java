@@ -114,9 +114,9 @@ public class MainGUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "Data Submitted");
 			}
 		});
+		
 		btnPanel.add(enterBTN);
 		contain1.add(btnPanel, BorderLayout.SOUTH);
-		contain1.add(enterBTN, BorderLayout.SOUTH);
 		return contain1;
 		
 	}
