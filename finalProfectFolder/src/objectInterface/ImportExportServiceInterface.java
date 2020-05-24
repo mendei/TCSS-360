@@ -6,6 +6,6 @@ public interface ImportExportServiceInterface {
 	
 	public UserProfile exportData(String userName);
 	
-	public boolean importData(UserProfile userProfile);
+	public void importData(UserProfile userProfile);
 	
 }
