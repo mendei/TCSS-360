@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.UserProfile;
+import service.ImportExportService;
 
 /**
  * This is the main gui for home-form
@@ -25,7 +26,9 @@ public class MainGUI extends JFrame {
 	
 	private static final Dimension FRAME_SIZE = new Dimension(750, 350);
 	
-	private static final UserProfile UP = new UserProfile();
+	private ImportExportService importExportService;
+	
+	private UserProfile userProfile;
 	
 	public String name1;
 	
@@ -38,8 +41,14 @@ public class MainGUI extends JFrame {
 	private JButton enterBTN;
 	
 	public MainGUI() {
-		super("TCSS_360_Data_Iteration");
 		
+		super("TCSS_360_Data_Iteration");
+
+		importExportService = new ImportExportService();
+		
+		userProfile = new UserProfile();
+		userProfile.setUserName("admin");
+		userProfile.setPassword("123");
 	}
 	
 	public void start(){
@@ -51,10 +60,7 @@ public class MainGUI extends JFrame {
         JPanel containPanel = new JPanel();
         containPanel.setLayout(new BorderLayout());
         super.add(containPanel);
-        containPanel.add(dataImplementation(), BorderLayout.NORTH);
-        
- 
-              
+        containPanel.add(dataImplementation(), BorderLayout.NORTH);  
 
 	}
 	
@@ -87,23 +93,12 @@ public class MainGUI extends JFrame {
 		enterBTN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UP.setEmail(emailTXT.getText());
-				UP.setName(nameTXT.getText());
-				System.out.println("Name: " + UP.getName() + "\nEmail: " + UP.getEmail());
-				
+				userProfile.setEmail(emailTXT.getText());
+				userProfile.setName(nameTXT.getText());
+				importExportService.importData(userProfile);
 			}
 		});
 		contain1.add(enterBTN, BorderLayout.SOUTH);
-		
-		
-
-		
-		
-
-		
-		
-
-
 		return contain1;
 		
 	}
