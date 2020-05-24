@@ -1,2 +1,2 @@
-admin,123,Ivan,Ivan@gmail.com
+admin,123,HiHiHi,HiHi@uw.edu
 sss,123,Tiger,Tiger@uw.edu

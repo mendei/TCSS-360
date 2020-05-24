@@ -107,30 +107,15 @@ public class MainGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				UP.setEmail(emailTXT.getText());
-				UP.setName(nameTXT.getText());
-				System.out.println("Name: " + UP.getName() + "\nEmail: " + UP.getEmail());
+				userProfile.setEmail(emailTXT.getText());
+				userProfile.setName(nameTXT.getText());
+				importExportService.importData(userProfile);
+				
 				JOptionPane.showMessageDialog(null, "Data Submitted");
 			}
 		});
 		btnPanel.add(enterBTN);
 		contain1.add(btnPanel, BorderLayout.SOUTH);
-		
-		
-
-		
-		
-
-		
-		
-
-
-
-				userProfile.setEmail(emailTXT.getText());
-				userProfile.setName(nameTXT.getText());
-				importExportService.importData(userProfile);
-			}
-		});
 		contain1.add(enterBTN, BorderLayout.SOUTH);
 		return contain1;
 		
