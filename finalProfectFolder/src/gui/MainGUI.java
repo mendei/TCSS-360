@@ -12,10 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.UserProfile;
+import service.ImportExportService;
 
 /**
  * This is the main gui for home-form
@@ -23,9 +25,11 @@ import model.UserProfile;
  */
 public class MainGUI extends JFrame {
 	
-	private static final Dimension FRAME_SIZE = new Dimension(750, 350);
+	private static final Dimension FRAME_SIZE = new Dimension(500, 350);
 	
 	private static final UserProfile UP = new UserProfile();
+	
+	private static final ImportExportService IES = new ImportExportService();
 	
 	public String name1;
 	
@@ -53,6 +57,8 @@ public class MainGUI extends JFrame {
         super.add(containPanel);
         containPanel.add(dataImplementation(), BorderLayout.NORTH);
         
+        IES.importData(UP);
+        
  
               
 
@@ -62,7 +68,9 @@ public class MainGUI extends JFrame {
 		JPanel contain1 = new JPanel();
 		JPanel dataEmail = new JPanel();
 		JPanel dataName = new JPanel();
+		JPanel btnPanel = new JPanel();
 		
+		btnPanel.setLayout(new FlowLayout());
 		dataEmail.setLayout(new FlowLayout());
 		contain1.setLayout(new BorderLayout());
 		dataName.setLayout(new FlowLayout());
@@ -83,17 +91,18 @@ public class MainGUI extends JFrame {
 		
 		
 		enterBTN = new JButton("Enter");
-		enterBTN.setPreferredSize(new Dimension(50,50));
+		enterBTN.setSize(150,150);
 		enterBTN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				UP.setEmail(emailTXT.getText());
 				UP.setName(nameTXT.getText());
 				System.out.println("Name: " + UP.getName() + "\nEmail: " + UP.getEmail());
-				
+				JOptionPane.showMessageDialog(null, "Data Submitted");
 			}
 		});
-		contain1.add(enterBTN, BorderLayout.SOUTH);
+		btnPanel.add(enterBTN);
+		contain1.add(btnPanel, BorderLayout.SOUTH);
 		
 		
 
