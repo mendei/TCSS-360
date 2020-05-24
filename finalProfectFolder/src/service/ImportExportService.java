@@ -7,10 +7,11 @@ import objectInterface.ImportExportServiceInterface;
 public class ImportExportService implements ImportExportServiceInterface {
 
 	FileManagementController fileController;
+
 	public ImportExportService() {
 		fileController = new FileManagementController();
 	}
-	
+
 	/***
 	 * Accept the data from the GUI and call the FileManagementController.
 	 */
@@ -21,11 +22,8 @@ public class ImportExportService implements ImportExportServiceInterface {
 	}
 
 	@Override
-	public boolean importData(UserProfile userProfile) {
-		// TODO Auto-generated method stub
-		return false;
+	public void importData(UserProfile userProfile) {
+		fileController.importSetting(userProfile);
 	}
-	
-	
-	
+
 }

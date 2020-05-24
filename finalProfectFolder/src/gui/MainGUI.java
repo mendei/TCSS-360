@@ -27,7 +27,9 @@ public class MainGUI extends JFrame {
 	
 	private static final Dimension FRAME_SIZE = new Dimension(500, 350);
 	
-	private static final UserProfile UP = new UserProfile();
+	private ImportExportService importExportService;
+	
+	private UserProfile userProfile;
 	
 	private static final ImportExportService IES = new ImportExportService();
 	
@@ -42,8 +44,14 @@ public class MainGUI extends JFrame {
 	private JButton enterBTN;
 	
 	public MainGUI() {
-		super("TCSS_360_Data_Iteration");
 		
+		super("TCSS_360_Data_Iteration");
+
+		importExportService = new ImportExportService();
+		
+		userProfile = new UserProfile();
+		userProfile.setUserName("admin");
+		userProfile.setPassword("123");
 	}
 	
 	public void start(){
@@ -61,6 +69,9 @@ public class MainGUI extends JFrame {
         
  
               
+
+        containPanel.add(dataImplementation(), BorderLayout.NORTH);  
+
 
 	}
 	
@@ -95,6 +106,7 @@ public class MainGUI extends JFrame {
 		enterBTN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				UP.setEmail(emailTXT.getText());
 				UP.setName(nameTXT.getText());
 				System.out.println("Name: " + UP.getName() + "\nEmail: " + UP.getEmail());
@@ -113,6 +125,13 @@ public class MainGUI extends JFrame {
 		
 
 
+
+				userProfile.setEmail(emailTXT.getText());
+				userProfile.setName(nameTXT.getText());
+				importExportService.importData(userProfile);
+			}
+		});
+		contain1.add(enterBTN, BorderLayout.SOUTH);
 		return contain1;
 		
 	}

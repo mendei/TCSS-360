@@ -11,6 +11,6 @@ public interface FileOperationInterface {
 	
 	public UserProfile exportSetting(String userName);
 	
-	public boolean importSetting(UserProfile userProfile);
+	public void importSetting(UserProfile userProfile);
 	
 }
