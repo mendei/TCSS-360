@@ -12,18 +12,16 @@ public class ImportExportService implements ImportExportServiceInterface {
 		fileController = new FileManagementController();
 	}
 
-	/***
-	 * Accept the data from the GUI and call the FileManagementController.
-	 */
-	@Override
-	public UserProfile exportData(String userName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void importData(UserProfile userProfile) {
 		fileController.importSetting(userProfile);
+	}
+
+
+	@Override
+	public UserProfile getUserBasedOnUserName(String userName) {
+		return fileController.getUserBasedOnUserName(userName);
 	}
 
 }

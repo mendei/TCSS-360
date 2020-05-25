@@ -1,8 +1,11 @@
 package model;
 
-import javax.swing.JFrame;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class UserProfile extends JFrame {
+public class UserProfile implements Serializable {
 
 	private String userName;
 	private String password;
@@ -11,6 +14,20 @@ public class UserProfile extends JFrame {
 
 	public UserProfile() {
 
+	}
+
+	public UserProfile(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+
+	public UserProfile(String userName, String password, String name, String email) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.name = name;
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -47,6 +64,25 @@ public class UserProfile extends JFrame {
 
 	public String toString() {
 		return String.format("%s,%s,%s,%s", userName, password, name, email);
+	}
+
+	public void export() {
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try {
+			fout = new FileOutputStream(new File("E:\\Profile.ser"), true);
+			oos = new ObjectOutputStream(fout);
+			oos.writeObject(this);
+			;
+		} catch (Exception ex) {
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception e) {
+				}
+			}
+		}
 	}
 
 }
