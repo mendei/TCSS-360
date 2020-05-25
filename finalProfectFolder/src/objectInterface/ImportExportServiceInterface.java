@@ -6,4 +6,6 @@ public interface ImportExportServiceInterface {
 	
 	public void importData(UserProfile userProfile);
 	
+	public UserProfile getUserBasedOnUserName(String userName);
+	
 }

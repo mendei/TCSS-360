@@ -64,5 +64,19 @@ public class FileManagementController implements FileOperationInterface {
 		return lstOfUser;
 	}
 
+	@Override
+	public UserProfile getUserBasedOnUserName(String userName) {
+		List<UserProfile> lstOfUser;
+		try {
+			lstOfUser = getAllUser();
+			for (UserProfile user : lstOfUser) {
+				if (user.getUserName().equalsIgnoreCase(userName)) {
+					return user;
+				}
+			}
+		} catch (IOException e) {}
+		return null;
+	}
+
 
 }

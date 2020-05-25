@@ -18,4 +18,10 @@ public class ImportExportService implements ImportExportServiceInterface {
 		fileController.importSetting(userProfile);
 	}
 
+
+	@Override
+	public UserProfile getUserBasedOnUserName(String userName) {
+		return fileController.getUserBasedOnUserName(userName);
+	}
+
 }
