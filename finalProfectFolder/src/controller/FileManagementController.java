@@ -2,9 +2,11 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +17,6 @@ public class FileManagementController implements FileOperationInterface {
 
 	private final String USER_INFO_PATH = "src/userInfo/userInfo.txt";
 
-	/***
-	 * Accessing the file to export the data based on user name
-	 */
-	@Override
-	public UserProfile exportSetting(String userName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/**
 	 * Accessing the file to import userProfile
@@ -69,5 +63,6 @@ public class FileManagementController implements FileOperationInterface {
 		}
 		return lstOfUser;
 	}
+
 
 }
