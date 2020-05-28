@@ -13,19 +13,19 @@ import objectInterface.FileOperationInterface;
 
 public class FileManagementController implements FileOperationInterface {
 
+	/**
+	 * The path of UserProfile file.
+	 */
 	private final String USER_INFO_PATH = "src/userInfo/userInfo.txt";
 
-	/***
-	 * Accessing the file to export the data based on user name
-	 */
+	
 	@Override
 	public UserProfile exportSetting(String userName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
-	 * Accessing the file to import userProfile
+	 * Import the setting information from user profile.
 	 */
 	@Override
 	public void importSetting(UserProfile userProfile) {
@@ -47,8 +47,13 @@ public class FileManagementController implements FileOperationInterface {
 		}
 	}
 
+	/**
+	 * Get all the user profiles and push into the list.
+	 * 
+	 * @return List<UserProfile>
+	 * @throws IOException
+	 */
 	private List<UserProfile> getAllUser() throws IOException {
-		
 		List<UserProfile> lstOfUser = new ArrayList<>();
 		BufferedReader br = null;
 		try {
@@ -71,6 +76,9 @@ public class FileManagementController implements FileOperationInterface {
 		return lstOfUser;
 	}
 	
+	/**
+	 * Return a UserProfile based on its username.
+	 */
 	@Override
 	public UserProfile getUserBasedOnUserName(String userName) {
 		List<UserProfile> lstOfUser;

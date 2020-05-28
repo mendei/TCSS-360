@@ -6,14 +6,17 @@ import objectInterface.ImportExportServiceInterface;
 
 public class ImportExportService implements ImportExportServiceInterface {
 
-	FileManagementController fileController;
+	/**
+	 * This object present the composition relationship between service layer and controller.
+	 */
+	private FileManagementController fileController;
 
 	public ImportExportService() {
 		fileController = new FileManagementController();
 	}
 
-	/***
-	 * Accept the data from the GUI and call the FileManagementController.
+	/**
+	 * Forwarding export data request from user.
 	 */
 	@Override
 	public UserProfile exportData(String userName) {
@@ -21,6 +24,9 @@ public class ImportExportService implements ImportExportServiceInterface {
 		return null;
 	}
 
+	/**
+	 * Forwarding import data request from user.
+	 */
 	@Override
 	public void importData(UserProfile userProfile) {
 		fileController.importSetting(userProfile);
