@@ -27,17 +27,20 @@ import service.ImportExportService;
  */
 public class ImportExportGUI extends JFrame {
 	
-	private static final Dimension FRAME_SIZE = new Dimension(500, 350);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	
+	/**
+	 * This is we start to instantiate all our objects 
+	 * or variables to be used later in the program!
+	 */
 	private ImportExportService importExportService;
 	
 	private UserProfile userProfile;
 	
-	private static final ImportExportService IES = new ImportExportService();
-	
-	public String name1;
-	
-	public String email1;
 	
 	private JTextField nameTXT;
 	
@@ -52,33 +55,47 @@ public class ImportExportGUI extends JFrame {
 	private FileManagementController FP;
 	public ImportExportGUI() {
 		
+		//This is the name in the top of the frame.
 		super("TCSS_360_Data_Iteration");
-
+		
 		importExportService = new ImportExportService();
 		
+		// Here we are creating a user with username admin and password 123
 		userProfile = new UserProfile();
 		userProfile.setUserName("admin");
 		userProfile.setPassword("123");
 	}
 	
 	public void start(){
+		
+		// Allows us to have the exit, minimize, and max buttons in upper right hand corner.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Allows us to see the gui
 		setVisible(true);
-        setSize(FRAME_SIZE);
-        setLocationRelativeTo(null);
-        setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
-        JPanel containPanel = new JPanel();
+        
+        
+		//Makes it so the frame opens in the center of your screen
+		setLocationRelativeTo(null);
+        
+		//WE are the tigers, so naturally we want a tiger icon!!!!:)
+		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
+        
+		/**
+		 * This is the most important panel, it conatains everything!!!
+		 * The layout is border, with entering name and email data in the 
+		 * North, and all buttons in the south. We then add this main panel 
+		 * the frame. 
+		 */
+		JPanel containPanel = new JPanel();
         containPanel.setLayout(new BorderLayout());
         super.add(containPanel);
-        containPanel.add(dataImplementation(), BorderLayout.NORTH);
         
-        
-        
- 
-              
-
-        containPanel.add(dataImplementation(), BorderLayout.NORTH);  
+        //This is where we add all the panels with name and email data and buttons.
+        containPanel.add(dataImplementation(), BorderLayout.NORTH); 
         containPanel.add(exportImport(), BorderLayout.SOUTH);
+        
+        //Used to pack the frame down and make everything look uniform.
         pack();
 
 
