@@ -2,6 +2,7 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,13 +11,13 @@ import java.util.List;
 
 import model.UserProfile;
 import objectInterface.FileOperationInterface;
+import utilities.Constants;
 
 public class FileManagementController implements FileOperationInterface {
 
 	/**
 	 * The path of UserProfile file.
 	 */
-	private final String USER_INFO_PATH = "src/userInfo/userInfo.txt";
 
 	
 	@Override
@@ -32,7 +33,7 @@ public class FileManagementController implements FileOperationInterface {
 		BufferedWriter bw = null;
 		try {
 			List<UserProfile> lstOfUser = getAllUser();
-			bw = new BufferedWriter(new FileWriter(USER_INFO_PATH));
+			bw = new BufferedWriter(new FileWriter(Constants.USER_INFO_PATH));
 			for (UserProfile user : lstOfUser) {
 				if (user.getUserName().equalsIgnoreCase(userProfile.getUserName())) {
 					bw.write(userProfile.toString());
@@ -57,7 +58,7 @@ public class FileManagementController implements FileOperationInterface {
 		List<UserProfile> lstOfUser = new ArrayList<>();
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader(USER_INFO_PATH));
+			br = new BufferedReader(new FileReader(Constants.USER_INFO_PATH));
 			String row = br.readLine();
 			while (row != null) {
 				String data[] = row.split(",");
@@ -91,6 +92,11 @@ public class FileManagementController implements FileOperationInterface {
 			}
 		} catch (IOException e) {}
 		return null;
+	}
+
+	@Override
+	public File[] getListOfFileByFolder(String path) {
+		return new File(path).listFiles();
 	}
 	
 	

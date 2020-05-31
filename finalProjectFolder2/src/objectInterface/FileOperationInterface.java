@@ -1,5 +1,7 @@
 package objectInterface;
 
+import java.io.File;
+
 import model.UserProfile;
 
 /***
@@ -13,6 +15,8 @@ public interface FileOperationInterface {
 	
 	public void importSetting(UserProfile userProfile);
 
-	UserProfile getUserBasedOnUserName(String userName);
+	public UserProfile getUserBasedOnUserName(String userName);
+	
+	public File[] getListOfFileByFolder(String path);
 	
 }
