@@ -46,24 +46,34 @@ public class ImportExportGUI extends JFrame {
 	
 	private JButton enterBTN;
 	
-	private JButton exportButton;
+	private JButton exportBTN;
 	
 	private JButton importBTN;
 	
 	private FileManagementController FP;
+	
+	/**
+	 * @authors: Austin, Ivan, Anh
+	 * Instantiates userProfile objects and sets the name of the frame.
+	 */
 	public ImportExportGUI() {
 		
-		//This is the name in the top of the frame.
+		
 		super("TCSS_360_Data_Iteration");
 		
 		importExportService = new ImportExportService();
 		
-		// Here we are creating a user with username admin and password 123
+		
 		userProfile = new UserProfile();
 		userProfile.setUserName("admin");
 		userProfile.setPassword("123");
 	}
 	
+	/**
+	 * @author Austin
+	 * This is the method where everything is added to the 
+	 * frame container.
+	 */
 	public void start(){
 		
 		// Allows us to have the exit, minimize, and max buttons in upper right hand corner.
@@ -99,6 +109,11 @@ public class ImportExportGUI extends JFrame {
 
 	}
 	
+	/**
+	 * @author Austin for the import button
+	 * @author Ivan for the Export Button
+	 * @returns the Panel with the import and export button
+	 */
 	public JPanel exportImport()  {
 		//Creates a File Management Object so we can import and export user data.
 		FP = new FileManagementController();
@@ -150,14 +165,14 @@ public class ImportExportGUI extends JFrame {
 		});
 		
 		//Here we are creating the button export and setting a size of 150 X 150
-		exportButton = new JButton("Export");
-		exportButton.setSize(150, 150);
+		exportBTN = new JButton("Export");
+		exportBTN.setSize(150, 150);
 
 		/**
 		 * We are creating the action listener so if the user clicks on the button
 		 * we can export the name and email they entered. 
 		 */
-		exportButton.addActionListener(new ActionListener(){
+		exportBTN.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -182,7 +197,7 @@ public class ImportExportGUI extends JFrame {
 		
 		//Finally we are adding the buttons into the panel.
 		contain2.add(importBTN);
-		contain2.add(exportButton);
+		contain2.add(exportBTN);
 		
 		//We return this panel so it can be added to the south region of the main frame.
 		return contain2;
@@ -193,7 +208,10 @@ public class ImportExportGUI extends JFrame {
 	}
 	
 	
-	
+	/**
+	 * @author Austin
+	 * @return the Panel with enter name and email, and enter button.
+	 */
 	public JPanel dataImplementation() {
 		JPanel contain1 = new JPanel();
 		JPanel dataEmail = new JPanel();
