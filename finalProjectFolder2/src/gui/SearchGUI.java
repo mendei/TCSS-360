@@ -118,7 +118,7 @@ public class SearchGUI extends JFrame {
 					File[] files = searchFileService.getListOfFileByFolder(Constants.ROOT_PATH_OF_FILE);
 					List<File> listOfFile = new ArrayList<>();
 					for (File f : files) {
-						if (f.getName().contains(hashTag)) {
+						if (f.getName().toLowerCase().contains(hashTag.toLowerCase())) {
 							for (File subFile : f.listFiles()) {
 								listOfFile.add(subFile);
 							}
