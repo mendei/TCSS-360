@@ -1,2 +1,2 @@
-admin,123,Tigers,tcsstigers@gmail.com
+admin,123,austin,austin.l.scott
 austin246,123456,Austin,Austin@uw.edu
