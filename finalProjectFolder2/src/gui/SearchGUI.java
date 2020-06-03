@@ -37,9 +37,9 @@ import utilities.Constants;
  * @author Anh Tran
  */
 public class SearchGUI extends JFrame {
-	
+
 	public static SearchFileService searchFileService = new SearchFileService();
-	
+
 	private JTextField hashTagTxt;
 	private JButton searchBtn;
 	private JPanel folderPnl;
@@ -125,6 +125,11 @@ public class SearchGUI extends JFrame {
 						if (f.getName().toLowerCase().contains(hashTag.toLowerCase())) {
 							for (File subFile : f.listFiles()) {
 								listOfFile.add(subFile);
+							}
+						} else {
+							for (File subFile : f.listFiles()) {
+								if (subFile.getName().toLowerCase().contains(hashTag.toLowerCase()))
+									listOfFile.add(subFile);
 							}
 						}
 					}
