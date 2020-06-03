@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -70,6 +71,8 @@ public class SearchGUI extends JFrame {
 	}
 
 	public void start() {
+		// WE are the tigers, so naturally we want a tiger icon!!!!:)
+		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
 		this.setTitle("Searching Files");
 		this.setLayout(new BorderLayout());
 		JPanel searchPnl = new JPanel();

@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +16,10 @@ public class HomeScreen {
 
 	public void createWindow() {
 
-		JFrame frame = new JFrame("Panel Example");
+		JFrame frame = new JFrame("Home Screen");
+		// WE are the tigers, so naturally we want a tiger icon!!!!:)
+		frame.setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
+
 		JPanel containPanel = new JPanel();
 		containPanel.setLayout(new BorderLayout());
 
