@@ -3,6 +3,8 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,7 +35,20 @@ public  void createWindow() {
 		JPanel taskbarPanel = new JPanel();
 		JLabel label = new JLabel("Taskbar");
 		JButton searchButton = new JButton("Search");
+		searchButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SearchGUI().start();
+			}
+		});
+		
 		JButton addButton = new JButton("Add");
+		addButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AddFileGUI().start();
+			}
+		});
 		
 		taskbarPanel.add(searchButton);
 		taskbarPanel.add(addButton);

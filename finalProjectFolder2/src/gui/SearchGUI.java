@@ -94,9 +94,8 @@ public class SearchGUI extends JFrame {
 
 		this.add(folderPnl, BorderLayout.WEST);
 		this.add(filePnl, BorderLayout.CENTER);
-		this.pack();
+		this.setSize(400, 300);
 		this.setLocationByPlatform(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 
 	}
