@@ -2,6 +2,11 @@ package model;
 
 import javax.swing.JFrame;
 
+/**
+ * User Profile Model.
+ * 
+ * @author Anh Tran
+ */
 public class UserProfile extends JFrame {
 
 	private String userName;

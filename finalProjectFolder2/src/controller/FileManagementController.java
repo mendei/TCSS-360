@@ -3,12 +3,17 @@ package controller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Category;
 import model.UserProfile;
 import objectInterface.FileOperationInterface;
 import utilities.Constants;
@@ -16,17 +21,19 @@ import utilities.Constants;
 public class FileManagementController implements FileOperationInterface {
 
 	/**
-	 * The path of UserProfile file.
+	 * Export Setting.
+	 * 
+	 * @author Anh Tran
 	 */
-
-	
 	@Override
 	public UserProfile exportSetting(String userName) {
 		return null;
 	}
 
 	/**
-	 * Import the setting information from user profile.
+	 * Import Setting.
+	 * 
+	 * @author Anh Tran
 	 */
 	@Override
 	public void importSetting(UserProfile userProfile) {
@@ -53,6 +60,7 @@ public class FileManagementController implements FileOperationInterface {
 	 * 
 	 * @return List<UserProfile>
 	 * @throws IOException
+	 * @author Anh Tran
 	 */
 	private List<UserProfile> getAllUser() throws IOException {
 		List<UserProfile> lstOfUser = new ArrayList<>();
@@ -76,9 +84,11 @@ public class FileManagementController implements FileOperationInterface {
 		}
 		return lstOfUser;
 	}
-	
-	/**
-	 * Return a UserProfile based on its username.
+
+	/***
+	 * Get the User profile based on their username.
+	 * 
+	 * @author Anh Tran
 	 */
 	@Override
 	public UserProfile getUserBasedOnUserName(String userName) {
@@ -90,15 +100,63 @@ public class FileManagementController implements FileOperationInterface {
 					return user;
 				}
 			}
-		} catch (IOException e) {}
+		} catch (IOException e) {
+		}
 		return null;
 	}
 
+	/***
+	 * Get list of files by folder (categories).
+	 * 
+	 * @author Anh Tran
+	 */
 	@Override
 	public File[] getListOfFileByFolder(String path) {
 		return new File(path).listFiles();
 	}
 	
+	/***
+	 * Add a choosen file from user into the file system under the specific category.
+	 * 
+	 * @author Anh Tran
+	 */
+	@Override
+	public void addFile(model.File file) {
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			is = new FileInputStream(new File(file.getPath()));
+			os = new FileOutputStream(
+					new File("FileFolder\\" + file.getCategory().getCategoryName() + "\\" + file.getFileName()));
+			byte[] buf = new byte[1024];
+			int bytesRead;
+			while ((bytesRead = is.read(buf)) > 0) {
+				os.write(buf, 0, bytesRead);
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				is.close();
+				os.close();
+			} catch (IOException e) {
+			}
+		}
+
+	}
 	
+	/***
+	 * Get List of categories.
+	 * 
+	 * @author Anh Tran
+	 */
+	public Category[] getCategories() {
+		File root = new File("FileFolder\\");
+		Category categoriesLst[] = new Category[root.listFiles().length];
+		int i = 0;
+		for (File f : root.listFiles()) {
+			categoriesLst[i++] = new Category(f.getName());
+		}
+		return categoriesLst;
+	}
 
 }

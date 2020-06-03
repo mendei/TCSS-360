@@ -4,6 +4,11 @@ import controller.FileManagementController;
 import model.UserProfile;
 import objectInterface.ImportExportServiceInterface;
 
+/**
+ * Proving the methods for GUI layer to communicate with File Controller.
+ * 
+ * @author Anh Tran
+ */
 public class ImportExportService implements ImportExportServiceInterface {
 
 	/**
