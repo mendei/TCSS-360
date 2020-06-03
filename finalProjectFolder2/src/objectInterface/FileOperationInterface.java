@@ -25,4 +25,6 @@ public interface FileOperationInterface {
 	
 	public Category[] getCategories();
 	
+	public boolean verifyAuthentication(String userName, String password);
+	
 }
