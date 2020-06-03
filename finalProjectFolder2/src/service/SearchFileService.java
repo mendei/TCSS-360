@@ -5,6 +5,11 @@ import java.io.File;
 import controller.FileManagementController;
 import objectInterface.SearchFileServiceInterface;
 
+/**
+ * Proving the methods for GUI layer to communicate with File Controller.
+ * 
+ * @author Anh Tran
+ */
 public class SearchFileService implements SearchFileServiceInterface {
 
 	private FileManagementController fileController;

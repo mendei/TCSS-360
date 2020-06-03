@@ -31,6 +31,11 @@ import javax.swing.filechooser.FileSystemView;
 import service.SearchFileService;
 import utilities.Constants;
 
+/**
+ * Searching GUI providing the user interface for user to searching files.
+ * 
+ * @author Anh Tran
+ */
 public class SearchGUI extends JFrame {
 	
 	public static SearchFileService searchFileService = new SearchFileService();
@@ -152,9 +157,7 @@ public class SearchGUI extends JFrame {
 class TextFileFilter implements FileFilter {
 
 	public boolean accept(File file) {
-		// implement the logic to select files here..
 		String name = file.getName().toLowerCase();
-		// return name.endsWith(".java") || name.endsWith(".class");
 		return name.length() < 20;
 	}
 }
