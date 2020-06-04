@@ -33,7 +33,6 @@ public class AboutScreenGUI extends JFrame {
 
     public void start() {
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setSize(FRAME_SIZE);
         setLocationRelativeTo(null);
