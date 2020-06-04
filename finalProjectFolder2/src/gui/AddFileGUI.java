@@ -58,7 +58,7 @@ public class AddFileGUI extends JFrame {
 	public void start() {
 		// Allows us to have the exit, minimize, and max buttons in upper right hand
 		// corner.
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.setLayout(new BorderLayout());
 
 		// Allows us to see the gui

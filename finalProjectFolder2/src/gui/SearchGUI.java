@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,9 +38,9 @@ import utilities.Constants;
  * @author Anh Tran
  */
 public class SearchGUI extends JFrame {
-	
+
 	public static SearchFileService searchFileService = new SearchFileService();
-	
+
 	private JTextField hashTagTxt;
 	private JButton searchBtn;
 	private JPanel folderPnl;
@@ -70,6 +71,8 @@ public class SearchGUI extends JFrame {
 	}
 
 	public void start() {
+		// WE are the tigers, so naturally we want a tiger icon!!!!:)
+		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
 		this.setTitle("Searching Files");
 		this.setLayout(new BorderLayout());
 		JPanel searchPnl = new JPanel();
@@ -94,9 +97,8 @@ public class SearchGUI extends JFrame {
 
 		this.add(folderPnl, BorderLayout.WEST);
 		this.add(filePnl, BorderLayout.CENTER);
-		this.pack();
+		this.setSize(400, 300);
 		this.setLocationByPlatform(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 
 	}
@@ -126,6 +128,11 @@ public class SearchGUI extends JFrame {
 						if (f.getName().toLowerCase().contains(hashTag.toLowerCase())) {
 							for (File subFile : f.listFiles()) {
 								listOfFile.add(subFile);
+							}
+						} else {
+							for (File subFile : f.listFiles()) {
+								if (subFile.getName().toLowerCase().contains(hashTag.toLowerCase()))
+									listOfFile.add(subFile);
 							}
 						}
 					}

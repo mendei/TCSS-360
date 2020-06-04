@@ -30,6 +30,19 @@ public class FileManagementController implements FileOperationInterface {
 		return null;
 	}
 
+	public boolean verifyAuthentication(String userName, String password) {
+		try {
+			List<UserProfile> lstOfUser = getAllUser();
+			for (UserProfile user : lstOfUser) {
+				if (user.getUserName().equalsIgnoreCase(userName) && user.getPassword().equalsIgnoreCase(password)) {
+					return true;
+				}
+			}
+		} catch (IOException e) {
+		}
+		return false;
+	}
+
 	/**
 	 * Import Setting.
 	 * 
@@ -114,9 +127,10 @@ public class FileManagementController implements FileOperationInterface {
 	public File[] getListOfFileByFolder(String path) {
 		return new File(path).listFiles();
 	}
-	
+
 	/***
-	 * Add a choosen file from user into the file system under the specific category.
+	 * Add a choosen file from user into the file system under the specific
+	 * category.
 	 * 
 	 * @author Anh Tran
 	 */
@@ -143,7 +157,7 @@ public class FileManagementController implements FileOperationInterface {
 		}
 
 	}
-	
+
 	/***
 	 * Get List of categories.
 	 * 
