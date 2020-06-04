@@ -77,7 +77,6 @@ public class ImportExportGUI extends JFrame {
 	public void start(){
 		
 		// Allows us to have the exit, minimize, and max buttons in upper right hand corner.
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Allows us to see the gui
 		setVisible(true);
