@@ -173,4 +173,10 @@ public class FileManagementController implements FileOperationInterface {
 		return categoriesLst;
 	}
 
+	@Override
+	public void addCategory(String category) {
+		File root = new File("FileFolder\\" + category);
+		root.mkdirs();
+	}
+
 }

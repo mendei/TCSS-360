@@ -29,5 +29,11 @@ public class FileModificationService implements FileModificationInterface {
 		return fileController.getCategories();
 	}
 
+	@Override
+	public void addCategory(String category) {
+		fileController.addCategory(category);
+	}
+
+
 	
 }

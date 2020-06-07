@@ -27,4 +27,6 @@ public interface FileOperationInterface {
 	
 	public boolean verifyAuthentication(String userName, String password);
 	
+	public void addCategory(String category);
+	
 }

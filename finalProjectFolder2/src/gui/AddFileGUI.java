@@ -45,10 +45,12 @@ public class AddFileGUI extends JFrame {
 	private String fileName;
 
 	private JComboBox<Category> categoriesCbx;
-
-	public AddFileGUI() {
+	
+	private HomeScreen parentFrame;
+	
+	public AddFileGUI(HomeScreen frame) {
 		super("Add Button");
-
+		this.parentFrame = frame;
 	}
 
 	/**
@@ -122,6 +124,12 @@ public class AddFileGUI extends JFrame {
 							new Category(categoriesCbx.getSelectedItem().toString()));
 					fileModifService.addFile(fileObject);
 					JOptionPane.showMessageDialog(null, "The file is added successfully!");
+					
+					parentFrame.filePnl.remove(parentFrame.fileScrl);
+					parentFrame.fileScrl = parentFrame.getFileScrl(parentFrame.folderLst.getSelectedValue() + "");
+					parentFrame.filePnl.add(parentFrame.fileScrl);
+					parentFrame.filePnl.validate();
+					parentFrame.filePnl.repaint();
 				}
 			}
 		});
@@ -130,18 +138,4 @@ public class AddFileGUI extends JFrame {
 
 	}
 
-	/**
-	 * Main method.
-	 * 
-	 * @param theArgs arguments.
-	 */
-	public static void main(final String[] theArgs) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new AddFileGUI().start();
-
-			}
-		});
-	}
 }
