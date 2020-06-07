@@ -44,21 +44,22 @@ import utilities.Constants;
  * 
  * @author Anh Tran
  */
-public class HomeScreen extends JFrame {
+public class HomeScreen extends JFrame implements ActionListener {
 
 	public static SearchFileService searchFileService = new SearchFileService();
 
 	private JTextField hashTagTxt;
 	private JButton searchBtn;
 	private JButton openFileBtn;
-	private JPanel folderPnl;
-	private JScrollPane folderScrl;
-	private JList folderLst;
-	private JPanel filePnl;
-	private JScrollPane fileScrl;
-	private JList fileLst;
+	private JButton categoryBtn;
+	public JPanel folderPnl;
+	public JScrollPane folderScrl;
+	public JList folderLst;
+	public JPanel filePnl;
+	public JScrollPane fileScrl;
+	public JList fileLst;
 
-	private JScrollPane getFolderScrl(String filePath) {
+	public JScrollPane getFolderScrl(String filePath) {
 		File[] files = searchFileService.getListOfFileByFolder(filePath);
 		folderLst = new JList(files);
 		folderLst.setCellRenderer(new FileRenderer(true));
@@ -66,7 +67,7 @@ public class HomeScreen extends JFrame {
 		return new JScrollPane(folderLst);
 	}
 
-	private JScrollPane getFileScrl(String filePath) {
+	public JScrollPane getFileScrl(String filePath) {
 		File[] files = searchFileService.getListOfFileByFolder(filePath);
 		fileLst = new JList(files);
 		fileLst.setCellRenderer(new FileRenderer(true));
@@ -91,14 +92,20 @@ public class HomeScreen extends JFrame {
 		Image newimg = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		addFileIcon = new ImageIcon(newimg);
 		JButton addButton = new JButton(addFileIcon);
+		addButton.setName("AddFile");
 		addButton.setBackground(Color.WHITE);
 		addButton.setOpaque(true);
-		addButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new AddFileGUI().start();
-			}
-		});
+		addButton.addActionListener(this);
+
+		ImageIcon categoryIcon = new ImageIcon("src\\Icon\\AddCategory.png");
+		img = categoryIcon.getImage();
+		newimg = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+		categoryIcon = new ImageIcon(newimg);
+		categoryBtn = new JButton(categoryIcon);
+		categoryBtn.setName("AddCategory");
+		categoryBtn.setBackground(Color.WHITE);
+		categoryBtn.setOpaque(true);
+		categoryBtn.addActionListener(this);
 
 		ImageIcon aboutIcon = new ImageIcon("src\\Icon\\AboutIcon.png");
 		img = aboutIcon.getImage();
@@ -128,6 +135,7 @@ public class HomeScreen extends JFrame {
 			}
 		});
 
+		taskbarPanel.add(categoryBtn);
 		taskbarPanel.add(addButton);
 		taskbarPanel.add(aboutButton);
 		taskbarPanel.add(importExportButton);
@@ -158,15 +166,75 @@ public class HomeScreen extends JFrame {
 			}
 		});
 
+		JButton deleteBtn = new JButton("Delete File");
+		deleteBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (fileLst.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(null, "Please select file to delete!");
+					return;
+				}
+				File file = new File(fileLst.getSelectedValue() + "");
+				file.delete();
+				JOptionPane.showMessageDialog(null, "Delete Sucessfully!");
+				filePnl.remove(fileScrl);
+				fileScrl = getFileScrl(folderLst.getSelectedValue() + "");
+				filePnl.add(fileScrl);
+				filePnl.validate();
+				filePnl.repaint();
+			}
+		});
+
+		JButton deleteFolder = new JButton("Delete Folder");
+		deleteFolder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (folderLst.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(null, "Please select folder to delete!");
+					return;
+				}
+				File file = new File(folderLst.getSelectedValue() + "");
+				for (File f : file.listFiles()) {
+					f.delete();
+				}
+				file.delete();
+				JOptionPane.showMessageDialog(null, "Delete Sucessfully!");
+				folderPnl.remove(folderLst);
+				folderScrl = getFolderScrl("FileFolder");
+				folderLst.setBackground(Color.GRAY);
+				folderPnl.add(folderLst);
+				folderPnl.setBackground(Color.GRAY);
+				folderPnl.validate();
+				folderPnl.repaint();
+				folderLst.addListSelectionListener(new ListSelectionListener() {
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						filePnl.remove(fileScrl);
+						fileScrl = getFileScrl(folderLst.getSelectedValue() + "");
+						filePnl.add(fileScrl);
+						filePnl.validate();
+						filePnl.repaint();
+					}
+				});
+				filePnl.remove(fileScrl);
+				fileScrl = new JScrollPane();
+				filePnl.add(fileScrl);
+				filePnl.validate();
+				filePnl.repaint();
+			}
+		});
+
 		searchPnl.add(new JLabel("Key to search:   "));
 		searchPnl.add(hashTagTxt);
 		searchPnl.add(searchBtn);
 		searchPnl.add(openFileBtn);
-		
+		searchPnl.add(deleteBtn);
+		searchPnl.add(deleteFolder);
+
 		wrapPnl.add(taskbarPanel);
 		wrapPnl.add(new JSeparator());
 		wrapPnl.add(searchPnl);
-		
+
 		this.add(wrapPnl, BorderLayout.NORTH);
 
 		folderPnl = new JPanel();
@@ -180,7 +248,7 @@ public class HomeScreen extends JFrame {
 		fileScrl = getFileScrl("FileFolder");
 		filePnl.add(fileScrl);
 
-		seActionForComponents();
+		setActionForComponents();
 
 		this.add(folderPnl, BorderLayout.WEST);
 		this.add(filePnl, BorderLayout.CENTER);
@@ -190,7 +258,19 @@ public class HomeScreen extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	private void seActionForComponents() {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton btn = (JButton) e.getSource();
+		if (btn.getName().equals("AddCategory")) {
+			new AddCategoryGUI(this);
+		}
+		if (btn.getName().equals("AddFile")) {
+			new AddFileGUI(this).start();
+		}
+
+	}
+
+	private void setActionForComponents() {
 
 		folderLst.addListSelectionListener(new ListSelectionListener() {
 			@Override
