@@ -171,7 +171,9 @@ public class HomeScreen extends JFrame {
 
 		folderPnl = new JPanel();
 		folderScrl = getFolderScrl("FileFolder");
+		folderLst.setBackground(Color.GRAY);
 		folderPnl.add(folderLst);
+		folderPnl.setBackground(Color.GRAY);
 
 		filePnl = new JPanel();
 		filePnl.setLayout(new BorderLayout(1, 1));
