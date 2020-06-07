@@ -13,6 +13,10 @@ public class ImportExportService implements ImportExportServiceInterface {
 	}
 
 
+	/***
+	 * Accept the data from the GUI and call the FileManagementController.
+	 */
+
 	@Override
 	public void importData(UserProfile userProfile) {
 		fileController.importSetting(userProfile);
@@ -20,8 +24,13 @@ public class ImportExportService implements ImportExportServiceInterface {
 
 
 	@Override
+
 	public UserProfile getUserBasedOnUserName(String userName) {
 		return fileController.getUserBasedOnUserName(userName);
+
+	public void importData(UserProfile userProfile) {
+		fileController.importSetting(userProfile);
+
 	}
 
 }

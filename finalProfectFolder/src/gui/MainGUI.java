@@ -7,7 +7,6 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -16,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import model.UserProfile;
 import service.ImportExportService;
 
@@ -28,10 +26,17 @@ public class MainGUI extends JFrame {
 	
 	private static final Dimension FRAME_SIZE = new Dimension(500, 350);
 	
+	private ImportExportService importExportService;
+
 	private UserProfile userProfile;
 	
 	private static final ImportExportService IES = new ImportExportService();
+
+	public String name1;
 	
+	public String email1;
+	
+
 	private JTextField nameTXT;
 	
 	private JTextField emailTXT;
@@ -41,6 +46,10 @@ public class MainGUI extends JFrame {
 	public MainGUI() {
 		
 		super("TCSS_360_Data_Iteration");
+
+
+		importExportService = new ImportExportService();
+
 		
 		userProfile = new UserProfile();
 		userProfile.setUserName("admin");
@@ -57,6 +66,7 @@ public class MainGUI extends JFrame {
         containPanel.setLayout(new BorderLayout());
         super.add(containPanel);
         containPanel.add(dataImplementation(), BorderLayout.NORTH);
+
         containPanel.add(dataImplementation(), BorderLayout.NORTH);  
 
 
@@ -88,7 +98,11 @@ public class MainGUI extends JFrame {
 		contain1.add(dataEmail, BorderLayout.CENTER);
 		
 		
+
 		enterBTN = new JButton("Import");
+
+		enterBTN = new JButton("Enter");
+
 		enterBTN.setSize(150,150);
 		enterBTN.addActionListener(new ActionListener() {
 			@Override
@@ -96,10 +110,16 @@ public class MainGUI extends JFrame {
 
 				userProfile.setEmail(emailTXT.getText());
 				userProfile.setName(nameTXT.getText());
+
 				IES.importData(userProfile);
 				userProfile.export();
 				JOptionPane.showMessageDialog(null, "Data Submitted");
 				
+
+				importExportService.importData(userProfile);
+				
+				JOptionPane.showMessageDialog(null, "Data Submitted");
+
 			}
 		});
 		
@@ -108,6 +128,7 @@ public class MainGUI extends JFrame {
 		return contain1;
 		
 	}
+
 	
     /**
      * Main method.
@@ -119,6 +140,7 @@ public class MainGUI extends JFrame {
             @Override
             public void run() {
                 new MainGUI().start();
+
             }
         });
     }
