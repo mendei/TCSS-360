@@ -9,7 +9,7 @@ import model.UserProfile;
  */
 public interface FileOperationInterface {
 	
-	public UserProfile exportSetting(String userName);
+	public UserProfile getUserBasedOnUserName(String userName);
 	
 	public void importSetting(UserProfile userProfile);
 	
