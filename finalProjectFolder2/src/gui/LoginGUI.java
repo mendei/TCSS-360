@@ -62,7 +62,7 @@ public class LoginGUI extends JDialog {
 					return;
 				}
 				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
-					new HomeScreen().createWindow();
+					new HomeScreen().start();
 					dispose();
 				}
 				else {
@@ -79,7 +79,7 @@ public class LoginGUI extends JDialog {
 					return;
 				}
 				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
-					new HomeScreen().createWindow();
+					new HomeScreen().start();
 					dispose();
 				}
 				else {
@@ -113,7 +113,7 @@ public class LoginGUI extends JDialog {
 						i.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(null, "User account created!");
-					new HomeScreen().createWindow();
+					new HomeScreen().start();
 					dispose();
 				}
 				
