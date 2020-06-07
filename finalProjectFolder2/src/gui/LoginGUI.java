@@ -5,6 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.nio.file.Path;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -24,10 +33,12 @@ public class LoginGUI extends JDialog {
 	
 	private JTextField userNameTxt;
 	private JPasswordField passwordTxt;
-
+	private File file;
+	
+	
 	public LoginGUI() {
 		this.setTitle("Authentication");
-		this.setLayout(new GridLayout(4, 1));
+		this.setLayout(new GridLayout(6, 1));
 		
 		JPanel userNamePnl = new JPanel();
 		userNamePnl.add(new JLabel("Username: "));
@@ -42,7 +53,7 @@ public class LoginGUI extends JDialog {
 		this.add(passwordPnl);
 
 		JPanel btnPnl = new JPanel();
-		JButton loginBtn = new JButton("Login");
+		JButton loginBtn = new JButton("Login as Admin");
 		loginBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -59,6 +70,56 @@ public class LoginGUI extends JDialog {
 				}
 			}
 		});
+		
+		JButton userLoginBtn = new JButton("Login as User");
+		userLoginBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(userNameTxt.getText().equals("") || passwordTxt.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter username and password!");
+					return;
+				}
+				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
+					new HomeScreen().createWindow();
+					dispose();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Wrong username or password!");
+				}
+			}
+		});
+		
+		JButton createUserBtn = new JButton("Create User Account");
+		createUserBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(userNameTxt.getText().equals("") || passwordTxt.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Please enter username and password!");
+					return;
+				}
+				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
+					JOptionPane.showMessageDialog(null, "User already exist.","Error Message", JOptionPane.ERROR_MESSAGE);
+				} 
+				if(!authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())){
+					file = new File("src/userInfo/userInfo.txt");
+					FileWriter fw = null;
+					BufferedWriter br = null;
+					try {
+						fw = new FileWriter(file,true);
+						br = new BufferedWriter(fw);
+						br.append("," + userNameTxt.getText() + "," + passwordTxt.getText());
+						br.flush();
+						fw.close();
+						br.close();
+					} catch(IOException i) {
+						i.printStackTrace();
+					}
+					JOptionPane.showMessageDialog(null, "User account created!");
+					new HomeScreen().createWindow();
+					dispose();
+				}
+				
+			}
+		});
+		
 
 		JButton resetBtn = new JButton("Reset");
 		resetBtn.addActionListener(new ActionListener() {
@@ -70,6 +131,8 @@ public class LoginGUI extends JDialog {
 		});
 		
 		btnPnl.add(loginBtn);
+		btnPnl.add(userLoginBtn);
+		btnPnl.add(createUserBtn);
 		btnPnl.add(resetBtn);
 		
 		this.add(btnPnl);
