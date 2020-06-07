@@ -105,7 +105,7 @@ public class LoginGUI extends JDialog {
 					try {
 						fw = new FileWriter(file,true);
 						br = new BufferedWriter(fw);
-						br.append("," + userNameTxt.getText() + "," + passwordTxt.getText());
+						br.append("\n" + userNameTxt.getText() + "," + passwordTxt.getText() + ",N/A,N/A");
 						br.flush();
 						fw.close();
 						br.close();
