@@ -6,7 +6,7 @@ import controller.FileManagementController;
 import objectInterface.SearchFileServiceInterface;
 
 /**
- * Proving the methods for GUI layer to communicate with File Controller.
+ * Proving the methods for GUI layer to communicate with File Controller about searching file related.
  * 
  * @author Anh Tran
  */

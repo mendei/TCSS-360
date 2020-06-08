@@ -5,7 +5,7 @@ import model.UserProfile;
 import objectInterface.ImportExportServiceInterface;
 
 /**
- * Proving the methods for GUI layer to communicate with File Controller.
+ * Proving the methods for GUI layer to communicate with File Controller about import and export.
  * 
  * @author Anh Tran
  */
@@ -18,15 +18,6 @@ public class ImportExportService implements ImportExportServiceInterface {
 
 	public ImportExportService() {
 		fileController = new FileManagementController();
-	}
-
-	/**
-	 * Forwarding export data request from user.
-	 */
-	@Override
-	public UserProfile exportData(String userName) {
-		
-		return null;
 	}
 
 	/**

@@ -2,9 +2,12 @@ package objectInterface;
 
 import model.UserProfile;
 
+/**
+ * Prototype interface for Import And Export.
+ * 
+ * @author Anh Tran
+ */
 public interface ImportExportServiceInterface {
-	
-	public UserProfile exportData(String userName);
 	
 	public void importData(UserProfile userProfile);
 	
