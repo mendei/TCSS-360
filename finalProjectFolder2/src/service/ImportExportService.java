@@ -21,15 +21,6 @@ public class ImportExportService implements ImportExportServiceInterface {
 	}
 
 	/**
-	 * Forwarding export data request from user.
-	 */
-	@Override
-	public UserProfile exportData(String userName) {
-		
-		return null;
-	}
-
-	/**
 	 * Forwarding import data request from user.
 	 */
 	@Override

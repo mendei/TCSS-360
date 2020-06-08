@@ -20,25 +20,12 @@ import utilities.Constants;
 
 public class FileManagementController implements FileOperationInterface {
 
-	/**
-	 * Export Setting.
-	 * 
-	 * @author Anh Tran
-	 */
-	@Override
-	public UserProfile exportSetting(String userName) {
-		return null;
-	}
-
 	public boolean verifyAuthentication(String userName, String password) {
-		try {
-			List<UserProfile> lstOfUser = getAllUser();
-			for (UserProfile user : lstOfUser) {
-				if (user.getUserName().equalsIgnoreCase(userName) && user.getPassword().equalsIgnoreCase(password)) {
-					return true;
-				}
+		List<UserProfile> lstOfUser = getAllUser();
+		for (UserProfile user : lstOfUser) {
+			if (user.getUserName().equalsIgnoreCase(userName) && user.getPassword().equalsIgnoreCase(password)) {
+				return true;
 			}
-		} catch (IOException e) {
 		}
 		return false;
 	}
@@ -64,7 +51,6 @@ public class FileManagementController implements FileOperationInterface {
 			}
 			bw.close();
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
 		}
 	}
 
@@ -75,7 +61,7 @@ public class FileManagementController implements FileOperationInterface {
 	 * @throws IOException
 	 * @author Anh Tran
 	 */
-	private List<UserProfile> getAllUser() throws IOException {
+	private List<UserProfile> getAllUser() {
 		List<UserProfile> lstOfUser = new ArrayList<>();
 		BufferedReader br = null;
 		try {
@@ -93,7 +79,6 @@ public class FileManagementController implements FileOperationInterface {
 			}
 			br.close();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return lstOfUser;
 	}
@@ -113,7 +98,7 @@ public class FileManagementController implements FileOperationInterface {
 					return user;
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 		}
 		return null;
 	}

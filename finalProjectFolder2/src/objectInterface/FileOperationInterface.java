@@ -12,8 +12,7 @@ import model.UserProfile;
  * 
  */
 public interface FileOperationInterface {
-	
-	public UserProfile exportSetting(String userName);
+
 	
 	public void importSetting(UserProfile userProfile);
 
