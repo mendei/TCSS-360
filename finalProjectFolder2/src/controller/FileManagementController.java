@@ -18,8 +18,21 @@ import model.UserProfile;
 import objectInterface.FileOperationInterface;
 import utilities.Constants;
 
+/**
+ * This class works as a driver to provide the method to communicate between the
+ * service layer with the file system. This class will provide methods such as
+ * get file, get category, add new file, add new category,... In other words,
+ * all of the communication with the file systems must go through this class.
+ * 
+ * @author Anh Tran
+ */
 public class FileManagementController implements FileOperationInterface {
 
+	/**
+	 * Veryfing the authetioncation.
+	 * 
+	 * @author Anh Tran
+	 */
 	public boolean verifyAuthentication(String userName, String password) {
 		List<UserProfile> lstOfUser = getAllUser();
 		for (UserProfile user : lstOfUser) {
@@ -29,9 +42,9 @@ public class FileManagementController implements FileOperationInterface {
 		}
 		return false;
 	}
-
+	
 	/**
-	 * Import Setting.
+	 * Importing user profile.
 	 * 
 	 * @author Anh Tran
 	 */
@@ -57,8 +70,6 @@ public class FileManagementController implements FileOperationInterface {
 	/**
 	 * Get all the user profiles and push into the list.
 	 * 
-	 * @return List<UserProfile>
-	 * @throws IOException
 	 * @author Anh Tran
 	 */
 	private List<UserProfile> getAllUser() {

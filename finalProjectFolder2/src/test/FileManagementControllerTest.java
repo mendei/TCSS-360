@@ -1,15 +1,23 @@
 package test;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.File;
 
 import org.junit.Test;
 
 import controller.FileManagementController;
 import model.UserProfile;
 
+/**
+ * JUnit Test for FileManagementController
+ * 
+ * @author Anh Tran
+ */
 public class FileManagementControllerTest {
 
 	FileManagementController fileController = new FileManagementController();
@@ -56,4 +64,22 @@ public class FileManagementControllerTest {
 		}
 	}
 
+	@Test
+	public void getListOfFileByFolderTest() {
+		assertNotNull(fileController.getListOfFileByFolder("FileFolder"));
+	}
+	
+	@Test
+	public void addCategoryTest() {
+		fileController.addCategory("Demo");
+		File f = new File("FileFolder\\Demo");
+		f.delete();
+		assertTrue(true);
+	}
+	
+	@Test
+	public void getCategoriesTest() {
+		assertNotNull(fileController.getCategories());
+	}
+	
 }

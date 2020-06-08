@@ -5,7 +5,7 @@ import model.UserProfile;
 import objectInterface.ImportExportServiceInterface;
 
 /**
- * Proving the methods for GUI layer to communicate with File Controller.
+ * Proving the methods for GUI layer to communicate with File Controller about import and export.
  * 
  * @author Anh Tran
  */
