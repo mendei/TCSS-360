@@ -18,33 +18,33 @@ import model.UserProfile;
 import objectInterface.FileOperationInterface;
 import utilities.Constants;
 
+/**
+ * This class works as a driver to provide the method to communicate between the
+ * service layer with the file system. This class will provide methods such as
+ * get file, get category, add new file, add new category,... In other words,
+ * all of the communication with the file systems must go through this class.
+ * 
+ * @author Anh Tran
+ */
 public class FileManagementController implements FileOperationInterface {
 
 	/**
-	 * Export Setting.
+	 * Veryfing the authetioncation.
 	 * 
 	 * @author Anh Tran
 	 */
-	@Override
-	public UserProfile exportSetting(String userName) {
-		return null;
-	}
-
 	public boolean verifyAuthentication(String userName, String password) {
-		try {
-			List<UserProfile> lstOfUser = getAllUser();
-			for (UserProfile user : lstOfUser) {
-				if (user.getUserName().equalsIgnoreCase(userName) && user.getPassword().equalsIgnoreCase(password)) {
-					return true;
-				}
+		List<UserProfile> lstOfUser = getAllUser();
+		for (UserProfile user : lstOfUser) {
+			if (user.getUserName().equalsIgnoreCase(userName) && user.getPassword().equalsIgnoreCase(password)) {
+				return true;
 			}
-		} catch (IOException e) {
 		}
 		return false;
 	}
-
+	
 	/**
-	 * Import Setting.
+	 * Importing user profile.
 	 * 
 	 * @author Anh Tran
 	 */
@@ -64,18 +64,15 @@ public class FileManagementController implements FileOperationInterface {
 			}
 			bw.close();
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
 		}
 	}
 
 	/**
 	 * Get all the user profiles and push into the list.
 	 * 
-	 * @return List<UserProfile>
-	 * @throws IOException
 	 * @author Anh Tran
 	 */
-	private List<UserProfile> getAllUser() throws IOException {
+	private List<UserProfile> getAllUser() {
 		List<UserProfile> lstOfUser = new ArrayList<>();
 		BufferedReader br = null;
 		try {
@@ -93,7 +90,6 @@ public class FileManagementController implements FileOperationInterface {
 			}
 			br.close();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return lstOfUser;
 	}
@@ -113,7 +109,7 @@ public class FileManagementController implements FileOperationInterface {
 					return user;
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 		}
 		return null;
 	}

@@ -7,7 +7,7 @@ import model.Category;
 import objectInterface.FileModificationInterface;
 
 /**
- * Proving the methods for GUI layer to communicate with File Controller.
+ * Proving the methods for GUI layer to communicate with File Controller about file modification.
  * 
  * @author Anh Tran
  */

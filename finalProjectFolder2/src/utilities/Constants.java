@@ -3,7 +3,7 @@ package utilities;
 /**
  * All of the contants of the app will be defined here.
  * 
- * @author tatu1710
+ * @author Anh Tran
  */
 public class Constants {
 	
