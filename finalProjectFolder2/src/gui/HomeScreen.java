@@ -44,8 +44,7 @@ import utilities.Constants;
  * Searching GUI providing the user interface for user to searching files.
  * 
  * @author Anh Tran
- * @author Austin (minimal work in this class.. Made some color effects and 
- * a user log out button).
+ * @author Austin Color Effects and Log out Button. 
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
@@ -67,6 +66,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		folderLst = new JList(files);
 		folderLst.setCellRenderer(new FileRenderer(true));
 		folderLst.setVisibleRowCount(9);
+		folderLst.setForeground(new Color(238,95,12));
 		return new JScrollPane(folderLst);
 	}
 
@@ -85,10 +85,12 @@ public class HomeScreen extends JFrame implements ActionListener {
 	public void start() {
 		// WE are the tigers, so naturally we want a tiger icon!!!!:)
 		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
-		this.setTitle("Searching Files");
+		this.setTitle("Home Screen");
 		this.setLayout(new BorderLayout());
+		this.setBackground(Color.GREEN);
 
 		JPanel taskbarPanel = new JPanel();
+		taskbarPanel.setBackground(Color.DARK_GRAY);
 
 		ImageIcon addFileIcon = new ImageIcon("src\\Icon\\AddFile.png");
 		Image img = addFileIcon.getImage();
@@ -170,13 +172,17 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 		JPanel wrapPnl = new JPanel();
 		wrapPnl.setLayout(new GridLayout(3, 1));
+		wrapPnl.setBackground(Color.DARK_GRAY);
 
 		JPanel searchPnl = new JPanel();
+		searchPnl.setBackground(Color.DARK_GRAY);
 		searchPnl.setLayout(new FlowLayout(FlowLayout.LEFT));
 		hashTagTxt = new JTextField(18);
 		searchBtn = new JButton("Search");
+		searchBtn.setBackground(new Color(238,95,12));
 
 		openFileBtn = new JButton("Open file");
+		openFileBtn.setBackground(new Color(238,95,12));
 		openFileBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -195,6 +201,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		});
 
 		JButton deleteBtn = new JButton("Delete File");
+		deleteBtn.setBackground(new Color(238,95,12));
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -214,6 +221,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		});
 
 		JButton deleteFolder = new JButton("Delete Folder");
+		deleteFolder.setBackground(new Color(238,95,12));
 		deleteFolder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -229,9 +237,9 @@ public class HomeScreen extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Delete Sucessfully!");
 				folderPnl.remove(folderLst);
 				folderScrl = getFolderScrl("FileFolder");
-				folderLst.setBackground(Color.GRAY);
+				folderLst.setBackground(Color.BLACK);
 				folderPnl.add(folderLst);
-				folderPnl.setBackground(Color.GRAY);
+				folderPnl.setBackground(Color.BLACK);
 				folderPnl.validate();
 				folderPnl.repaint();
 				folderLst.addListSelectionListener(new ListSelectionListener() {
@@ -251,8 +259,9 @@ public class HomeScreen extends JFrame implements ActionListener {
 				filePnl.repaint();
 			}
 		});
-
-		searchPnl.add(new JLabel("Key to search:   "));
+		JLabel searchLbl = new JLabel("Key to search:   ");
+		searchLbl.setForeground(new Color(238,95,12));
+		searchPnl.add(searchLbl);
 		searchPnl.add(hashTagTxt);
 		searchPnl.add(searchBtn);
 		searchPnl.add(openFileBtn);
@@ -260,16 +269,16 @@ public class HomeScreen extends JFrame implements ActionListener {
 		searchPnl.add(deleteFolder);
 
 		wrapPnl.add(taskbarPanel);
-		wrapPnl.add(new JSeparator());
+		wrapPnl.add(new JSeparator()).setBackground(new Color(238,95,12));;
 		wrapPnl.add(searchPnl);
 
 		this.add(wrapPnl, BorderLayout.NORTH);
 
 		folderPnl = new JPanel();
 		folderScrl = getFolderScrl("FileFolder");
-		folderLst.setBackground(Color.GRAY);
+		folderLst.setBackground(Color.BLACK);
 		folderPnl.add(folderLst);
-		folderPnl.setBackground(Color.GRAY);
+		folderPnl.setBackground(Color.BLACK);
 
 		filePnl = new JPanel();
 		filePnl.setLayout(new BorderLayout(1, 1));
