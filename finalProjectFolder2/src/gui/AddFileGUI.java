@@ -73,12 +73,17 @@ public class AddFileGUI extends JFrame {
 		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
 
 		JPanel categoryPnl = new JPanel();
-		categoryPnl.add(new JLabel("Category: "));
+		categoryPnl.setBackground(Color.BLACK);
+		JLabel categoryLbl = new JLabel("Category: ");
+		categoryLbl.setForeground(new Color(238,95,12));
+		categoryPnl.add(categoryLbl);
 		categoriesCbx = new JComboBox<Category>(fileModifService.getCategories());
+		categoriesCbx.setForeground(new Color(238,95,12));
 		categoryPnl.add(categoriesCbx);
 		this.add(categoryPnl, BorderLayout.NORTH);
 
 		containerPNL = new JPanel();
+		containerPNL.setBackground(Color.BLACK);
 		containerPNL.add(addFile(), BorderLayout.CENTER);
 		this.add(containerPNL);
 
@@ -94,20 +99,21 @@ public class AddFileGUI extends JFrame {
 	private JButton addFile() {
 
 		addBTN = new JButton("Choose File");
+		addBTN.setBackground(new Color(238,95,12));
 		addBTN.setSize(new Dimension(100, 100));
-		try {
-			img = ImageIO.read(getClass().getResource("/Icon/addFile.jpg"));
-			Image newImg = img.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
-
-			addBTN.setIcon(new ImageIcon(newImg));
-		} catch (Exception ex) {
-			System.out.println(ex);
-		}
+//		try {
+//			img = ImageIO.read(getClass().getResource("/Icon/addFile.jpg"));
+//			Image newImg = img.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+//
+//			addBTN.setIcon(new ImageIcon(newImg));
+//		} catch (Exception ex) {
+//			System.out.println(ex);
+//		}
 
 		// addBTN.setBorder(BorderFactory.createLineBorder(Color.black, 5));
-		addBTN.setContentAreaFilled(false);
-		addBTN.setFocusPainted(false);
-		addBTN.setOpaque(false);
+//		addBTN.setContentAreaFilled(false);
+//		addBTN.setFocusPainted(false);
+//		addBTN.setOpaque(false);
 
 		addBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,6 +123,7 @@ public class AddFileGUI extends JFrame {
 				*/
 				chooser = new JFileChooser(".");
 				chooser.setDialogTitle("Upload File");
+				chooser.setForeground(new Color(238,95,12));
 				final int result = chooser.showSaveDialog(containerPNL);
 				if (result == JFileChooser.APPROVE_OPTION) {
 					final File selectedFile = chooser.getSelectedFile();
