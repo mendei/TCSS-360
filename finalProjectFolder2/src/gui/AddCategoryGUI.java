@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,13 +31,18 @@ public class AddCategoryGUI extends JFrame {
 		this.parentFrame = frame;
 		this.setTitle("Add Category");
 		this.setLayout(new BorderLayout());
+		this.setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
 
 		JPanel categoryPnl = new JPanel();
+		categoryPnl.setBackground(Color.BLACK);
 		categoryTxt = new JTextField(15);
-		categoryPnl.add(new JLabel("Category: "));
+		JLabel categoryLbl = new JLabel("Category: ");
+		categoryLbl.setForeground(new Color(238,95,12));
+		categoryPnl.add(categoryLbl);
 		categoryPnl.add(categoryTxt);
 
 		JButton addBtn = new JButton("Add");
+		addBtn.setBackground(new Color(238,95,12));
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -51,9 +57,9 @@ public class AddCategoryGUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "The category is added successfully!");
 				parentFrame.folderPnl.remove(parentFrame.folderLst);
 				parentFrame.folderScrl = parentFrame.getFolderScrl("FileFolder");
-				parentFrame.folderLst.setBackground(Color.GRAY);
+				parentFrame.folderLst.setBackground(Color.BLACK);
 				parentFrame.folderPnl.add(parentFrame.folderLst);
-				parentFrame.folderPnl.setBackground(Color.GRAY);
+				parentFrame.folderPnl.setBackground(Color.BLACK);
 				parentFrame.folderPnl.validate();
 				parentFrame.folderPnl.repaint();
 				
