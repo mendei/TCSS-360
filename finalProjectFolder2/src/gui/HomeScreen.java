@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,6 +44,8 @@ import utilities.Constants;
  * Searching GUI providing the user interface for user to searching files.
  * 
  * @author Anh Tran
+ * @author Austin (minimal work in this class.. Made some color effects and 
+ * a user log out button).
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
@@ -134,11 +137,36 @@ public class HomeScreen extends JFrame implements ActionListener {
 				new ImportExportGUI().start();
 			}
 		});
+		/**
+		 * @author Austin Scott
+		 * Creates a user profile button that is only for logging out.
+		 */
+		ImageIcon userIcon = new ImageIcon("src\\Icon\\userIcon.png");
+		img = userIcon.getImage();
+		newimg = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+		userIcon = new ImageIcon(newimg);
+		JButton userBtn = new JButton(userIcon);
+		userBtn.setBackground(Color.WHITE);
+		userBtn.setOpaque(true);
+		userBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "Would you like to Logout?","Logout Pane", 
+						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+				if(result == JOptionPane.YES_OPTION) {
+					dispose();
+					new LoginGUI();
+				} else {
+					JOptionPane.showMessageDialog(null,"User will not be logged out.");
+				}
+			
+			}
+		});
 
 		taskbarPanel.add(categoryBtn);
 		taskbarPanel.add(addButton);
 		taskbarPanel.add(aboutButton);
 		taskbarPanel.add(importExportButton);
+		taskbarPanel.add(userBtn);
 
 		JPanel wrapPnl = new JPanel();
 		wrapPnl.setLayout(new GridLayout(3, 1));
