@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -15,6 +16,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.file.Path;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -42,22 +44,30 @@ public class LoginGUI extends JDialog {
 	 */
 	public LoginGUI() {
 		this.setTitle("Authentication");
-		this.setLayout(new GridLayout(6, 1));
-		
+		this.setLayout(new GridLayout(3, 1));
+		setIconImage(new ImageIcon(getClass().getResource("/Icon/Icon.png")).getImage());
 		JPanel userNamePnl = new JPanel();
-		userNamePnl.add(new JLabel("Username: "));
+		userNamePnl.setBackground(Color.BLACK);
+		JLabel userN = new JLabel("Username: ");
+		userN.setForeground(new Color(238,95,12));
+		userNamePnl.add(userN);
 		userNameTxt = new JTextField(15);
 		userNamePnl.add(userNameTxt);
 		this.add(userNamePnl);
 
 		JPanel passwordPnl = new JPanel();
-		passwordPnl.add(new JLabel("Password: "));
+		passwordPnl.setBackground(Color.BLACK);
+		JLabel passwordLbl = new JLabel("Password: ");
+		passwordLbl.setForeground(new Color(238,95,12));
+		passwordPnl.add(passwordLbl);
 		passwordTxt = new JPasswordField(15);
 		passwordPnl.add(passwordTxt);
 		this.add(passwordPnl);
 
 		JPanel btnPnl = new JPanel();
+		btnPnl.setBackground(Color.BLACK);
 		JButton loginBtn = new JButton("Login as Admin");
+		loginBtn.setBackground(new Color(238,95,12));
 		loginBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +86,7 @@ public class LoginGUI extends JDialog {
 		});
 		
 		JButton userLoginBtn = new JButton("Login as User");
+		userLoginBtn.setBackground(new Color(238,95,12));
 		userLoginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(userNameTxt.getText().equals("") || passwordTxt.getText().equals("")) {
@@ -93,6 +104,7 @@ public class LoginGUI extends JDialog {
 		});
 		
 		JButton createUserBtn = new JButton("Create User Account");
+		createUserBtn.setBackground(new Color(238,95,12));
 		createUserBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(userNameTxt.getText().equals("") || passwordTxt.getText().equals("")) {
@@ -126,6 +138,7 @@ public class LoginGUI extends JDialog {
 		
 
 		JButton resetBtn = new JButton("Reset");
+		resetBtn.setBackground(new Color(238,95,12));
 		resetBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -138,11 +151,12 @@ public class LoginGUI extends JDialog {
 		btnPnl.add(userLoginBtn);
 		btnPnl.add(createUserBtn);
 		btnPnl.add(resetBtn);
-		
+		this.setBackground(Color.BLACK);
 		this.add(btnPnl);
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+		
 		
 	}
 
