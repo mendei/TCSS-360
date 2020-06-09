@@ -12,8 +12,9 @@ import org.junit.jupiter.api.Test;
 import gui.HomeScreen;
 
 /**
- * @author Austn
- *
+ * @author Austin
+ * Test the homescreen to make sure it opens properly
+ * with no failures or errors.
  */
 class HomeScreenTest {
 
