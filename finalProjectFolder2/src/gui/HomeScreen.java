@@ -44,7 +44,7 @@ import utilities.Constants;
  * Searching GUI providing the user interface for user to searching files.
  * 
  * @author Anh Tran
- * @author Austin Color Effects and Log out Button. 
+ * @author Austin Tiger them Color Effects and Log out Button. 
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
@@ -281,6 +281,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		folderPnl.setBackground(Color.BLACK);
 
 		filePnl = new JPanel();
+		filePnl.setBackground(new Color(238,95,12));
 		filePnl.setLayout(new BorderLayout(1, 1));
 		fileScrl = getFileScrl("FileFolder");
 		filePnl.add(fileScrl);

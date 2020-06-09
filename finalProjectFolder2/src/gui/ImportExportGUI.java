@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -95,6 +96,7 @@ public class ImportExportGUI extends JFrame {
 		 * the frame. 
 		 */
 		JPanel containPanel = new JPanel();
+		containPanel.setBackground(Color.BLACK);
         containPanel.setLayout(new BorderLayout());
         super.add(containPanel);
         
@@ -119,10 +121,12 @@ public class ImportExportGUI extends JFrame {
 		
 		//This panel "contain2" holds the import and export button with a flow layout.
 		JPanel contain2 = new JPanel();
+		contain2.setBackground(Color.BLACK);
 		contain2.setLayout(new FlowLayout());
 		
 		//Creating a JButton named Import and setting its size to 150X150
 		importBTN = new JButton("Import");
+		importBTN.setBackground(new Color(238,95,12));
 		importBTN.setSize(150,150);
 		
 		//This is where we declare our action listener for if the user clicks on the button. 
@@ -165,6 +169,7 @@ public class ImportExportGUI extends JFrame {
 		
 		//Here we are creating the button export and setting a size of 150 X 150
 		exportBTN = new JButton("Export");
+		exportBTN.setBackground(new Color(238,95,12));
 		exportBTN.setSize(150, 150);
 
 		/**
@@ -182,6 +187,7 @@ public class ImportExportGUI extends JFrame {
 				 * has all the users.
 				 */
 				JPanel exportDetails = new JPanel();
+				exportDetails.setBackground(Color.BLACK);
 				exportDetails.setLayout(new GridLayout(3,1));
 				exportDetails.add(new JLabel(String.format("Username: " 
 						+ userProfile.getName(), ""), JLabel.LEFT));
@@ -213,9 +219,13 @@ public class ImportExportGUI extends JFrame {
 	 */
 	public JPanel dataImplementation() {
 		JPanel contain1 = new JPanel();
+		contain1.setBackground(Color.BLACK);
 		JPanel dataEmail = new JPanel();
+		dataEmail.setBackground(Color.black);
 		JPanel dataName = new JPanel();
+		dataName.setBackground(Color.BLACK);
 		JPanel btnPanel = new JPanel();
+		btnPanel.setBackground(Color.BLACK);
 		
 		
 		btnPanel.setLayout(new FlowLayout());
@@ -224,7 +234,9 @@ public class ImportExportGUI extends JFrame {
 		dataName.setLayout(new FlowLayout());
 		
 		JLabel nameLabel = new JLabel("Enter Name: ");
+		nameLabel.setForeground(new Color(238,95,12));
 		JLabel emailLabel = new JLabel("Enter Email: ");
+		emailLabel.setForeground(new Color(238,95,12));
 		
 		dataEmail.add(emailLabel);
 		emailTXT = new JTextField(30);
@@ -239,6 +251,7 @@ public class ImportExportGUI extends JFrame {
 		
 		
 		enterBTN = new JButton("Enter");
+		enterBTN.setBackground(new Color(238,95,12));
 		enterBTN.setSize(150,150);
 		enterBTN.addActionListener(new ActionListener() {
 			@Override
