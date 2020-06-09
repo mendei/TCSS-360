@@ -35,7 +35,11 @@ public class LoginGUI extends JDialog {
 	private JPasswordField passwordTxt;
 	private File file;
 	
-	
+	/**
+	 * @authors Austin, Anh
+	 * Austin: Created login ability for users, and to create a user account
+	 * Anh created log in for admin, reset buttons, and jtext fields 
+	 */
 	public LoginGUI() {
 		this.setTitle("Authentication");
 		this.setLayout(new GridLayout(6, 1));

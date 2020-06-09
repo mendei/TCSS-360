@@ -5,7 +5,8 @@ package gui;
  */
 
 /**
- * @author austi
+ * @author Austin, Anh
+
  *
  */
 import java.awt.BorderLayout;
@@ -48,10 +49,6 @@ public class AboutScreenGUI extends JFrame {
 
         this.add(containPanel);
 
-        // NEED TO POST TO GIT
-        // NEED TO ADD PANEL
-        // NEED TO ADD LABEL WITH DESIGNER INFO
-        // CALLED FROM VERSIONINFO CLASS.
 
     }
 
@@ -137,14 +134,7 @@ public class AboutScreenGUI extends JFrame {
         classAndMethodContentPnl.add(adminClassPnl);
         classAndMethodContentPnl.add(visitorClassPnl);
         
-        /*
-        classAndMethodContentPnl.add(new JLabel(""));
-        classAndMethodContentPnl.add(new JLabel("Method class 1", JLabel.CENTER));
-        classAndMethodContentPnl.add(new JLabel("Method class 2", JLabel.CENTER));
-        classAndMethodContentPnl.add(new JLabel("Method class 3", JLabel.CENTER));
-        classAndMethodContentPnl.add(new JLabel("Method class 4", JLabel.CENTER));
-        classAndMethodContentPnl.add(new JLabel("..............", JLabel.CENTER));
-        */
+
 
         classAndMethodPnl.add(classAndMethodTitlePnl, BorderLayout.NORTH);
         classAndMethodPnl.add(classAndMethodContentPnl, BorderLayout.CENTER);
