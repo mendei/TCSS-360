@@ -88,10 +88,10 @@ public class HomeScreen extends JFrame implements ActionListener {
 		this.setTitle("Home Screen");
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.GREEN);
-
+		
 		JPanel taskbarPanel = new JPanel();
 		taskbarPanel.setBackground(Color.DARK_GRAY);
-
+		
 		ImageIcon addFileIcon = new ImageIcon("src\\Icon\\AddFile.png");
 		Image img = addFileIcon.getImage();
 		Image newimg = img.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
