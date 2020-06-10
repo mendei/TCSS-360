@@ -14,7 +14,13 @@ public class UserProfile extends JFrame {
 	private String name;
 	private String email;
 
-	public UserProfile() {
+	public UserProfile(String userName, String password, String name, String email) {
+		this.userName = userName;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		
+		
 
 	}
 
