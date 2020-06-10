@@ -45,6 +45,7 @@ import utilities.Constants;
  * 
  * @author Anh Tran
  * @author Austin Tiger them Color Effects and Log out Button. 
+ * @author Ivan Mendez , HomeScreen shell
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
