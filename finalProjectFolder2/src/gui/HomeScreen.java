@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -37,6 +35,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileSystemView;
 
+import model.UserProfile;
 import service.SearchFileService;
 import utilities.Constants;
 
@@ -45,11 +44,13 @@ import utilities.Constants;
  * 
  * @author Anh Tran
  * @author Austin Tiger them Color Effects and Log out Button. 
+ * @author Ivan Mendez , HomeScreen shell
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
 	public static SearchFileService searchFileService = new SearchFileService();
 
+	private UserProfile user;
 	private JTextField hashTagTxt;
 	private JButton searchBtn;
 	private JButton openFileBtn;
@@ -66,7 +67,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		folderLst = new JList(files);
 		folderLst.setCellRenderer(new FileRenderer(true));
 		folderLst.setVisibleRowCount(9);
-		folderLst.setForeground(new Color(238,95,12));
+		folderLst.setForeground(new Color(238, 95, 12));
 		return new JScrollPane(folderLst);
 	}
 
@@ -78,8 +79,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 		return new JScrollPane(fileLst);
 	}
 
-	public HomeScreen() {
-
+	public HomeScreen(UserProfile user) {
+		this.user = user;
 	}
 
 	public void start() {
@@ -140,8 +141,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 			}
 		});
 		/**
-		 * @author Austin Scott
-		 * Creates a user profile button that is only for logging out.
+		 * @author Austin Scott Creates a user profile button that is only for logging
+		 *         out.
 		 */
 		ImageIcon userIcon = new ImageIcon("src\\Icon\\userIcon.png");
 		img = userIcon.getImage();
@@ -152,20 +153,23 @@ public class HomeScreen extends JFrame implements ActionListener {
 		userBtn.setOpaque(true);
 		userBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "Would you like to Logout?","Logout Pane", 
-						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-				if(result == JOptionPane.YES_OPTION) {
+				int result = JOptionPane.showConfirmDialog(null, "Would you like to Logout?", "Logout Pane",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (result == JOptionPane.YES_OPTION) {
 					dispose();
 					new LoginGUI();
 				} else {
-					JOptionPane.showMessageDialog(null,"User will not be logged out.");
+					JOptionPane.showMessageDialog(null, "User will not be logged out.");
 				}
-			
+
 			}
 		});
 
-		taskbarPanel.add(categoryBtn);
-		taskbarPanel.add(addButton);
+		if (user.getUserName().equals("admin")) {
+			taskbarPanel.add(categoryBtn);
+			taskbarPanel.add(addButton);
+		}
+
 		taskbarPanel.add(aboutButton);
 		taskbarPanel.add(importExportButton);
 		taskbarPanel.add(userBtn);
@@ -179,10 +183,10 @@ public class HomeScreen extends JFrame implements ActionListener {
 		searchPnl.setLayout(new FlowLayout(FlowLayout.LEFT));
 		hashTagTxt = new JTextField(18);
 		searchBtn = new JButton("Search");
-		searchBtn.setBackground(new Color(238,95,12));
+		searchBtn.setBackground(new Color(238, 95, 12));
 
 		openFileBtn = new JButton("Open file");
-		openFileBtn.setBackground(new Color(238,95,12));
+		openFileBtn.setBackground(new Color(238, 95, 12));
 		openFileBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -201,7 +205,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		});
 
 		JButton deleteBtn = new JButton("Delete File");
-		deleteBtn.setBackground(new Color(238,95,12));
+		deleteBtn.setBackground(new Color(238, 95, 12));
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +225,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		});
 
 		JButton deleteFolder = new JButton("Delete Folder");
-		deleteFolder.setBackground(new Color(238,95,12));
+		deleteFolder.setBackground(new Color(238, 95, 12));
 		deleteFolder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -260,16 +264,20 @@ public class HomeScreen extends JFrame implements ActionListener {
 			}
 		});
 		JLabel searchLbl = new JLabel("Key to search:   ");
-		searchLbl.setForeground(new Color(238,95,12));
+		searchLbl.setForeground(new Color(238, 95, 12));
 		searchPnl.add(searchLbl);
 		searchPnl.add(hashTagTxt);
 		searchPnl.add(searchBtn);
 		searchPnl.add(openFileBtn);
-		searchPnl.add(deleteBtn);
-		searchPnl.add(deleteFolder);
+
+		if (user.getUserName().equals("admin")) {
+			searchPnl.add(deleteBtn);
+			searchPnl.add(deleteFolder);
+		}
 
 		wrapPnl.add(taskbarPanel);
-		wrapPnl.add(new JSeparator()).setBackground(new Color(238,95,12));;
+		wrapPnl.add(new JSeparator()).setBackground(new Color(238, 95, 12));
+		;
 		wrapPnl.add(searchPnl);
 
 		this.add(wrapPnl, BorderLayout.NORTH);
@@ -281,7 +289,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		folderPnl.setBackground(Color.BLACK);
 
 		filePnl = new JPanel();
-		filePnl.setBackground(new Color(238,95,12));
+		filePnl.setBackground(new Color(238, 95, 12));
 		filePnl.setLayout(new BorderLayout(1, 1));
 		fileScrl = getFileScrl("FileFolder");
 		filePnl.add(fileScrl);
@@ -353,15 +361,6 @@ public class HomeScreen extends JFrame implements ActionListener {
 			}
 		});
 
-	}
-
-	public static void main(final String[] theArgs) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new HomeScreen().start();
-			}
-		});
 	}
 
 }

@@ -80,11 +80,11 @@ public class FileManagementController implements FileOperationInterface {
 			String row = br.readLine();
 			while (row != null) {
 				String data[] = row.split(",");
-				UserProfile user = new UserProfile();
-				user.setUserName(data[0]);
-				user.setPassword(data[1]);
-				user.setName(data[2]);
-				user.setEmail(data[3]);
+				UserProfile user = new UserProfile(data[0],data[1], data[2],data[3]);
+				/*
+				 * user.setUserName(data[0]); user.setPassword(data[1]); user.setName(data[2]);
+				 * user.setEmail(data[3]);
+				 */
 				lstOfUser.add(user);
 				row = br.readLine();
 			}

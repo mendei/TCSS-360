@@ -51,11 +51,11 @@ public class FileManagementControllerTest {
 	@Test
 	public void importSettingTest() {
 		try {
-			UserProfile user = new UserProfile();
-			user.setUserName("admin");
-			user.setPassword("123");
-			user.setName("Admin");
-			user.setEmail("Admin@gmail.com");
+			UserProfile user = new UserProfile("admin", "123", "Admin", "Admin@gmail.com");
+//			user.setUserName("admin");
+//			user.setPassword("123");
+//			user.setName("Admin");
+//			user.setEmail("Admin@gmail.com");
 			fileController.importSetting(user);
 			assertTrue(true);
 		}

@@ -49,7 +49,7 @@ public class AddFileGUI extends JFrame {
 	private HomeScreen parentFrame;
 	
 	public AddFileGUI(HomeScreen frame) {
-		super("Add Button");
+		super("Add File");
 		this.parentFrame = frame;
 	}
 

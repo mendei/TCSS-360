@@ -1,8 +1,0 @@
-
-admin,123,aa,aaa
-sss,123,123,123
-user1,123,123,123
-
-admin,123,HiHiHi,HiHi@uw.edu
-sss,123,Tiger,Tiger@uw.edu
-
