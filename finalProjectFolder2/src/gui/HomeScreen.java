@@ -37,6 +37,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileSystemView;
 
+import model.UserProfile;
 import service.SearchFileService;
 import utilities.Constants;
 
@@ -50,6 +51,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 	public static SearchFileService searchFileService = new SearchFileService();
 
+	private UserProfile user;
 	private JTextField hashTagTxt;
 	private JButton searchBtn;
 	private JButton openFileBtn;
@@ -78,8 +80,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 		return new JScrollPane(fileLst);
 	}
 
-	public HomeScreen() {
-
+	public HomeScreen(UserProfile user) {
+		this.user = user;
 	}
 
 	public void start() {
@@ -163,9 +165,12 @@ public class HomeScreen extends JFrame implements ActionListener {
 			
 			}
 		});
-
-		taskbarPanel.add(categoryBtn);
-		taskbarPanel.add(addButton);
+		
+		if(user.getUserName().equals("admin")) {
+			taskbarPanel.add(categoryBtn);
+			taskbarPanel.add(addButton);
+		}
+		
 		taskbarPanel.add(aboutButton);
 		taskbarPanel.add(importExportButton);
 		taskbarPanel.add(userBtn);
@@ -353,15 +358,6 @@ public class HomeScreen extends JFrame implements ActionListener {
 			}
 		});
 
-	}
-
-	public static void main(final String[] theArgs) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new HomeScreen().start();
-			}
-		});
 	}
 
 }

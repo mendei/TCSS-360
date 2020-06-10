@@ -26,12 +26,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.FileManagementController;
 import model.UserProfile;
 import service.AuthenticationService;
 
 public class LoginGUI extends JDialog {
 	
 	private AuthenticationService authenticationService = new AuthenticationService();
+	private FileManagementController fileController = new FileManagementController();
 	
 	private JTextField userNameTxt;
 	private JPasswordField passwordTxt;
@@ -75,8 +77,12 @@ public class LoginGUI extends JDialog {
 					JOptionPane.showMessageDialog(null, "Please enter username and password!");
 					return;
 				}
+				if(!userNameTxt.getText().equals("admin")) {
+					JOptionPane.showMessageDialog(null, "You are not admin!");
+					return;
+				}
 				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
-					new HomeScreen().start();
+					new HomeScreen(fileController.getUserBasedOnUserName(userNameTxt.getText())).start();
 					dispose();
 				}
 				else {
@@ -94,7 +100,7 @@ public class LoginGUI extends JDialog {
 					return;
 				}
 				if(authenticationService.verifyAuthentication(userNameTxt.getText(), passwordTxt.getText())) {
-					new HomeScreen().start();
+					new HomeScreen(fileController.getUserBasedOnUserName(userNameTxt.getText())).start();
 					dispose();
 				}
 				else {
@@ -129,7 +135,7 @@ public class LoginGUI extends JDialog {
 						i.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(null, "User account created!");
-					new HomeScreen().start();
+					new HomeScreen(fileController.getUserBasedOnUserName(userNameTxt.getText())).start();
 					dispose();
 				}
 				
