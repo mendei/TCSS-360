@@ -1,4 +1,4 @@
-package tests;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 import model.Category;
 import model.File;
 
+
+/**
+ * 
+ * @author Ivan
+ * JUnit tests for the File class.
+ *
+ */
 class FileTest {
 
 	Category category = new Category("Living Room");
