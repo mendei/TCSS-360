@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -45,7 +43,8 @@ import utilities.Constants;
  * Searching GUI providing the user interface for user to searching files.
  * 
  * @author Anh Tran
- * @author Austin Tiger them Color Effects and Log out Button.
+ * @author Austin Tiger them Color Effects and Log out Button. 
+ * @author Ivan Mendez , HomeScreen shell
  */
 public class HomeScreen extends JFrame implements ActionListener {
 

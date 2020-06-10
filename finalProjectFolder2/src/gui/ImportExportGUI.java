@@ -65,9 +65,10 @@ public class ImportExportGUI extends JFrame {
 		importExportService = new ImportExportService();
 		
 		
-		userProfile = new UserProfile();
-		userProfile.setUserName("admin");
-		userProfile.setPassword("123");
+		userProfile = new UserProfile("admin", "123", "" , "");
+		/*
+		 * userProfile.setUserName("admin"); userProfile.setPassword("123");
+		 */
 	}
 	
 	/**
