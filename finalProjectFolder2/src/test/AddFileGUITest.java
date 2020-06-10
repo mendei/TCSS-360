@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import gui.AddFileGUI;
 import gui.HomeScreen;
+import model.UserProfile;
 
 public class AddFileGUITest {
 
@@ -21,10 +22,11 @@ public class AddFileGUITest {
 	@Test
 	public void testStart() {
 		
-		HomeScreen hs = new HomeScreen();
+		
 
 		try {
-			
+			UserProfile user = new UserProfile("admin", "", "", "");
+			HomeScreen hs = new HomeScreen(user);
 			AddFileGUI gui = new AddFileGUI(hs);
 			gui.start();
 			gui.dispose();
