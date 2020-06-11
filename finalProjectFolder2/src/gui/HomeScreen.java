@@ -45,6 +45,7 @@ import utilities.Constants;
  * @author Anh Tran
  * @author Austin Tiger them Color Effects and Log out Button. 
  * @author Ivan Mendez , HomeScreen shell
+ * @author khaled added logic to know to only give user log in open and search capabilities 
  */
 public class HomeScreen extends JFrame implements ActionListener {
 
