@@ -26,7 +26,11 @@ public class AddCategoryGUI extends JFrame {
 
 	private JTextField categoryTxt;
 	private HomeScreen parentFrame;
-
+	/**
+	 * @author Anh Tran 
+	 * @param frame
+	 * This allows us to add a category that already exists. 
+	 */
 	public AddCategoryGUI(HomeScreen frame) {
 		this.parentFrame = frame;
 		this.setTitle("Add Category");

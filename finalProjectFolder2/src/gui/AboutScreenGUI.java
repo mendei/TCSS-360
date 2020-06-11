@@ -26,7 +26,10 @@ import model.VersionInfo;
 public class AboutScreenGUI extends JFrame {
 
     private static final Dimension FRAME_SIZE = new Dimension(750, 350);
-
+    /**
+     * @author Austin
+     * @author Anh
+     */
     public AboutScreenGUI() {
         super("TCSS-360 Tigers About Screen");
 
